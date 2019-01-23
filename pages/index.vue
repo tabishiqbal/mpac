@@ -1,11 +1,15 @@
 <template>
   <div>
-    <div class="mb-8">
+    <div v-if="isLoggedIn">
+      <login-page v-on:credentials="userLogin"></login-page>
+    </div>
+    
+    <div class="mb-8" v-if="!isLoggedIn">
       <navbar></navbar>
       <hero></hero>
     </div>
 
-    <div class="container mx-auto lg:max-w-xl md:max-w-sm">
+    <div class="container mx-auto lg:max-w-xl md:max-w-sm" v-if="!isLoggedIn">
       <safe-neighbourhoods></safe-neighbourhoods>
       <new-listings></new-listings>
       <recently-sold></recently-sold>
@@ -19,6 +23,7 @@ import Hero from '~/components/Hero.vue';
 import SafeNeighbourhoods from '~/components/SafeNeighbourhoods.vue';
 import NewListings from '~/components/NewListings.vue';
 import RecentlySold from '~/components/RecentlySold.vue';
+import LoginPage from '~/components/LoginPage.vue';
 
 export default {
   components: {
@@ -27,7 +32,24 @@ export default {
     SafeNeighbourhoods,
     NewListings,
     RecentlySold,
+    LoginPage,
   },
+  data() {
+    return {
+      isLoggedIn: true,
+    }
+  },
+  methods: {
+    userLogin(value) {
+      let username = value.username;
+      let password = value.password;
+      if (username == 'tabishiqbal' && password == 'mpac') {
+        this.isLoggedIn = false;
+      } else {
+        alert('Wrong username or password');
+      };
+    }
+  }
 }
 </script>
 
