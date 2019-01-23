@@ -15,7 +15,8 @@
     "@fortawesome/free-solid-svg-icons": "^5.6.3",
     "@fortawesome/vue-fontawesome": "^0.1.5",
     "cross-env": "^5.2.0",
-    "nuxt": "^2.3.4"
+    "nuxt": "^2.3.4",
+    "nuxt-svg": "^0.1.4"
   },
   "devDependencies": {
     "autoprefixer": "^8.6.4",
